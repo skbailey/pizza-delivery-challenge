@@ -13,9 +13,9 @@ type Location struct {
 
 func main() {
 	current := Location{0, 0}
-	input := []string{">"}
-
 	locations := []Location{current}
+	input := []string{"^", ">", "v", "<"}
+
 	for _, instruction := range input {
 		var next = current
 		switch instruction {
@@ -36,6 +36,7 @@ func main() {
 		}
 
 		locations = append(locations, next)
+		current = next
 	}
 
 	fmt.Printf("Here are the visited locations: %#v\n", locations)
