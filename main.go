@@ -3,26 +3,21 @@ package main
 import (
 	"fmt"
 	"log"
+	"pizza-delivery/internal/models"
 )
 
-// Location identifies houses along the pizza delivery route
-type Location struct {
-	X int
-	Y int
-}
-
-var locationCounter map[Location]int
-
 func main() {
-	current := Location{0, 0}
-	locations := []Location{current}
-	locationCounter := map[Location]int{
-		current: 1,
-	}
-
+	// Validate input
 	input := []string{"^", ">", "v", "<"}
+
+	// Handle initial delivery
+	current := models.NewLocation(0, 0)
+	tracker := models.NewTracker()
+	tracker.AddLocation(current)
+
 	for _, instruction := range input {
 		var next = current
+
 		switch instruction {
 		case "^":
 			// Go north
@@ -40,22 +35,9 @@ func main() {
 			log.Fatalln("unexpected instruction received")
 		}
 
-		locations = append(locations, next)
+		tracker.AddLocation(next)
 		current = next
-
-		count, ok := locationCounter[next]
-		if ok {
-			locationCounter[next] = count + 1
-		} else {
-			locationCounter[next] = 1
-		}
 	}
 
-	var uniqueLocations []Location
-	for l := range locationCounter {
-		uniqueLocations = append(uniqueLocations, l)
-	}
-
-	fmt.Printf("Here are the visited locations: %#v\n", locations)
-	fmt.Printf("Unique locations: %#v\n", uniqueLocations)
+	fmt.Printf("Unique locations: %#v\n", tracker.GetUniqueLocations())
 }
