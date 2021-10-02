@@ -15,28 +15,17 @@ func main() {
 	tracker := models.NewTracker()
 	tracker.AddLocation(current)
 
+	// Deliver pizza
+	gps := models.NewGPS(current)
 	for _, instruction := range input {
-		var next = current
-
-		switch instruction {
-		case "^":
-			// Go north
-			next.Y++
-		case "v":
-			// Go south
-			next.Y--
-		case ">":
-			// Go east
-			next.X++
-		case "<":
-			// Go west
-			next.X--
-		default:
-			log.Fatalln("unexpected instruction received")
+		next, err := gps.Move(instruction)
+		if err != nil {
+			// Since we validate the input we should never get here. But in the exceptional
+			// case that we do enter this conditional, terminate the program
+			log.Fatal(err)
 		}
 
 		tracker.AddLocation(next)
-		current = next
 	}
 
 	fmt.Printf("Unique locations: %#v\n", tracker.GetUniqueLocations())
