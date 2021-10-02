@@ -22,13 +22,13 @@ func (t Tracker) AddLocation(loc Location) {
 	}
 }
 
-// GetUniqueLocations returns unique locations visited
-func (t Tracker) GetUniqueLocations() []Location {
+// CountUniqueLocations returns a count of unique locations visited
+func (t Tracker) CountUniqueLocations() int {
 	locations := make([]Location, 0)
 
 	for l := range t.locationCounter {
 		locations = append(locations, l)
 	}
 
-	return locations
+	return len(locations)
 }
