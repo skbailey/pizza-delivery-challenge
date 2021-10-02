@@ -8,8 +8,8 @@ type GPS struct {
 }
 
 // NewGPS creates a new GPS
-func NewGPS(position Location) GPS {
-	return GPS{
+func NewGPS(position Location) *GPS {
+	return &GPS{
 		position: position,
 	}
 }
