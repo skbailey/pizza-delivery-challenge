@@ -8,3 +8,5 @@ WORKDIR /app
 COPY go.mod ./
 
 COPY . .
+
+RUN go build

@@ -4,12 +4,12 @@
 
 By default, this will run the program with 1 delivery person (termed `deliverer` in the code because sometimes it's not a person at all). The `file-input` argument is required.
 ```bash
-go run main.go -file-input <path to file>
+go run main.go --file-input <path to file>
 ```
 
 You can alter the number of `deliverers` by passing the `deliverer-count` argument.
 ```bash
-go run main.go -file-input <path to file> -deliverer-count 2
+go run main.go --file-input <path to file> --deliverer-count 2
 ```
 
 ## Documentation

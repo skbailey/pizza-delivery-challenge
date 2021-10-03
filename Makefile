@@ -11,7 +11,7 @@ ifdef deliverers
 endif
 
 run:
-	@go run main.go -file-input $(input_file) -deliverer-count $(deliverer_count)
+	@go run main.go --file-input $(input_file) --deliverer-count $(deliverer_count)
 
 test:
 	@go test -v ./...
@@ -28,7 +28,7 @@ docker.build:
 	@docker build -t $(image_name):latest .
 
 docker.build.run: docker.build
-	@docker run --rm -it --name pizza-bae $(image_name):latest go run main.go -file-input $(input_file) -deliverer-count $(deliverer_count)
+	@docker run --rm -it --name pizza-bae $(image_name):latest go run main.go --file-input $(input_file) --deliverer-count $(deliverer_count)
 
 docker.run:
-	@docker run --rm -it --name pizza-bae $(image_name):latest go run main.go -file-input $(input_file) -deliverer-count $(deliverer_count)
+	@docker run --rm -it --name pizza-bae $(image_name):latest go run main.go --file-input $(input_file) --deliverer-count $(deliverer_count)
