@@ -2,7 +2,7 @@
 
 ## Usage
 
-By default, this will run the program with 1 delivery person (termed `deliverer` in the code because sometimes it's not a person at all). The `file-input` argument is required.
+By default, this will run the program with 1 delivery person (termed `deliverer` in the code because sometimes it's not a person at all). The `--file-input` argument is required.
 ```bash
 go run main.go --file-input <path to file>
 ```
@@ -123,4 +123,12 @@ image=goat/pizza make docker.run
 
 Take a look at the `Makefile` at the root of the project to view all possible options.
 
-## Changelog
+## Release Management
+
+We use [trunk-based workflow](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development) for release management. Features are broken up into smaller releasable chunks and we use short-lived branches with few commits to merge these chunks frequently to the `main` branch. This is an alternative to `gitflow` which is also an option but the concern is that long-lived feature branches increase the likelihood of needing to handle conflicts and result in higher complexity around releases eg code freezes.
+
+### Feature Flags
+In order to continuously release the component parts of a feature, use feature flags to dark launch code into production that can then be "switched on" eg using LaunchDarkly. There is an inherent cleanup of feature flags required once the feature is turned on and functioning as expected.
+
+### Releases
+We trigger code releases/deployments from the `main` branch so this branch must always be in a deployable state. For more detail on cutting a release and creating hotfixes via an intermediate release candidate branch [follow these instructions](https://www.nebulaworks.com/insights/posts/trunk-based-development-for-beginners/).
