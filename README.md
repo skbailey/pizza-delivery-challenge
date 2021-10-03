@@ -34,4 +34,53 @@ The `golangci.yml` file at project root contains the configuration options for t
 
 ## Docker
 
+You may use the `Dockerfile` in the project to build an image.
+
+```bash
+docker build -t directions/pizza .
+```
+
+You can then run the code in that image.
+
+```bash
+docker run --rm -it --name pizza-bae directions/pizza make run
+```
+
+## Make
+
+As a convenience, you can use `make` as a shortcut to some of the commands listed above.
+
+To run the application with the default options
+
+```bash
+make run
+```
+
+To pass arguments to the `make run` command
+
+```bash
+deliverers=2 input=directions/zigzag.txt make run
+```
+
+To run tests
+```bash
+make test
+```
+
+To build a docker image
+
+```bash
+make docker.build
+```
+
+To build a predefined image
+```bash
+image=goat/pizza make docker.build
+```
+
+To run a predefined image
+```bash
+image=goat/pizza make docker.run
+```
+
 ## Changelog
