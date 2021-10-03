@@ -1,4 +1,4 @@
-## Pizza Delivery
+# Pizza Delivery
 
 ## Usage
 
@@ -13,6 +13,40 @@ go run main.go -file-input <path to file> -deliverer-count 2
 ```
 
 ## Documentation
+
+There are two main top-level packages:
+- `reader`
+- `delivery`
+
+### The `reader` package
+
+There is one exported function in this package: `Read`
+
+```go
+func Read(path string) (string, error)
+    Read reads input from a file
+```
+
+This package reads string input from a file and returns it.
+
+```go
+input, err := reader.Read("path/to/file")
+```
+
+### The `delivery` package
+
+There is one exported function in this package: `Deliver`
+
+```go
+func Deliver(input string, delivererCount int) (int, error)
+    Deliver coordinates the delivery of pizzas
+```
+
+This package takes the string output from above (extracted from the given file) as well as a count of the number of `deliverers` and runs the algorithm responsible for delivering pizzas. On completion, this package returns the number of unique houses visited.
+
+```go
+housesVisited, err := delivery.Deliver("^^>v<<", 2)
+```
 
 ## Tests
 
