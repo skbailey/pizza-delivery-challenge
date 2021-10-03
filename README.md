@@ -21,7 +21,10 @@ You can run tests from the root of the project directory.
 go test -v ./...
 ```
 
-TODO: Add info about test coverage
+You can view test coverage data
+```bash
+go test -race -covermode=atomic -coverprofile=coverage.out ./...
+```
 
 ## Linting
 
@@ -82,5 +85,7 @@ To run a predefined image
 ```bash
 image=goat/pizza make docker.run
 ```
+
+Take a look at the `Makefile` at the root of the project to view all possible options.
 
 ## Changelog

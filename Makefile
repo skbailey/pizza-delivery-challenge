@@ -1,4 +1,4 @@
-.PHONY: docker.build docker.build.run docker.run run test
+.PHONY: docker.build docker.build.run docker.run run test test.coverage
 
 input_file = directions/pizza_delivery_input.txt
 ifdef input
@@ -15,6 +15,9 @@ run:
 
 test:
 	@go test -v ./...
+
+test.coverage:
+	@go test -race -covermode=atomic -coverprofile=coverage.out ./...
 
 image_name = delivery/pizza
 ifdef image
