@@ -8,7 +8,7 @@ import (
 
 // Deliver coordinates the delivery of pizzas
 func Deliver(input string, delivererCount int) (int, error) {
-	err := validation.Validate(input, delivererCount)
+	err := validation.ValidateDeliveryParams(input, delivererCount)
 	if err != nil {
 		return 0, err
 	}

@@ -6,42 +6,51 @@ import (
 	"testing"
 )
 
-func TestEmptyInputFailure(t *testing.T) {
-	invalidInput := ""
+func TestDeliveryParamsEmptyInputFailure(t *testing.T) {
+	emptyInput := ""
 	validDelivererCount := 1
-	err := validation.Validate(invalidInput, validDelivererCount)
+	err := validation.ValidateDeliveryParams(emptyInput, validDelivererCount)
 
 	if err != appErrors.ErrorValidationEmptyInput {
-		t.Error("expected a validation failure base on empty input")
+		t.Error("expected a validation failure based on empty input")
 	}
 }
 
-func TestInvalidDelivererCountFailure(t *testing.T) {
+func TestDeliveryParamsInvalidDelivererCountFailure(t *testing.T) {
 	validInput := ">"
 	invalidDelivererCount := 0
-	err := validation.Validate(validInput, invalidDelivererCount)
+	err := validation.ValidateDeliveryParams(validInput, invalidDelivererCount)
 
 	if err != appErrors.ErrorValidationInvalidDelivererCount {
-		t.Error("expected a validation failure base an invalid number of deliverers")
+		t.Error("expected a validation failure based on an invalid number of deliverers")
 	}
 }
 
-func TestInvalidInputFailure(t *testing.T) {
-	validInput := "><^^%"
-	invalidDelivererCount := 1
-	err := validation.Validate(validInput, invalidDelivererCount)
+func TestDeliveryParamsInvalidInputFailure(t *testing.T) {
+	invalidInput := "><^^%"
+	validDelivererCount := 1
+	err := validation.ValidateDeliveryParams(invalidInput, validDelivererCount)
 
 	if err != appErrors.ErrorValidationInvalidInput {
-		t.Error("expected a validation failure base on invalid input")
+		t.Error("expected a validation failure based on invalid input")
 	}
 }
 
-func TestValidationSuccess(t *testing.T) {
+func TestDeliveryParamsValidationSuccess(t *testing.T) {
 	validInput := "><^^"
-	invalidDelivererCount := 1
-	err := validation.Validate(validInput, invalidDelivererCount)
+	validDelivererCount := 1
+	err := validation.ValidateDeliveryParams(validInput, validDelivererCount)
 
 	if err != nil {
 		t.Error("validation failed unexpectedly", err)
+	}
+}
+
+func TestReadParamsEmptyPathFailure(t *testing.T) {
+	emptyPath := ""
+	err := validation.ValidateReadParams(emptyPath)
+
+	if err != appErrors.ErrorValidationEmptyInput {
+		t.Error("expected a validation failure based on an empty path")
 	}
 }

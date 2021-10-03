@@ -35,3 +35,25 @@ So, assuming the challenge starts at `origin` `(0,0)` (and a pizza is delivered 
 ## Considerations
 
 It doesn't sound like the dispatcher is trustworthy so I opted to read and validate the entire input at once before continuing to process it. This means that I'm reading the full string of data into memory. This isn't an optimal solution as the amount of memory we need will grow as the length of the string grows. A better solution would be to read the string a few (debatable how many) characters at a time and process the data in batches. The concern here is that if there is an invalid instructioni/character in the input as we process it in batches, what is the appropriate response? Should that deliverer just skip it or does this mean the remaining input is also invalid?
+
+## Answers
+
+### Part 1
+
+Only the delivery person is available.
+
+The number of houses that receive at least 1 pizza: `2565`
+
+```bash
+go run main.go -file-input directions/pizza_delivery_input.txt -deliverer-count 1
+```
+
+### Part 2
+
+The delivery person and goat are available.
+
+The number of houses that receive at least 1 pizza: `2639`
+
+```bash
+go run main.go -file-input directions/pizza_delivery_input.txt -deliverer-count 2
+```

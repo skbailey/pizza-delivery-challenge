@@ -7,8 +7,17 @@ import (
 
 var validDirectionsRegex = regexp.MustCompile(`^[\^v<>]+$`)
 
-// Validate validates string input
-func Validate(input string, delivererCount int) error {
+// ValidateReadParams validates the path for a file
+func ValidateReadParams(input string) error {
+	if input == "" {
+		return appErrors.ErrorValidationEmptyInput
+	}
+
+	return nil
+}
+
+// ValidateDeliveryParams validates the params for delivery
+func ValidateDeliveryParams(input string, delivererCount int) error {
 	err := validateInput(input)
 	if err != nil {
 		return err
