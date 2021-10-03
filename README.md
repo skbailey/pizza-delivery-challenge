@@ -21,6 +21,8 @@ You can run tests from the root of the project directory.
 go test -v ./...
 ```
 
+TODO: Add info about test coverage
+
 ## Linting
 
 We use `golangci-lint`. Once you install the program (via `brew` or [otherwise]()), run the following command at project root.
