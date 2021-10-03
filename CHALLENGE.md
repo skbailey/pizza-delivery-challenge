@@ -45,7 +45,7 @@ Only the delivery person is available.
 The number of houses that receive at least 1 pizza: `2565`
 
 ```bash
-go run main.go -file-input directions/pizza_delivery_input.txt -deliverer-count 1
+go run main.go --file-input directions/pizza_delivery_input.txt --deliverer-count 1
 ```
 
 ### Part 2
@@ -55,5 +55,5 @@ The delivery person and goat are available.
 The number of houses that receive at least 1 pizza: `2639`
 
 ```bash
-go run main.go -file-input directions/pizza_delivery_input.txt -deliverer-count 2
+go run main.go --file-input directions/pizza_delivery_input.txt --deliverer-count 2
 ```
