@@ -1,6 +1,11 @@
 package validation
 
-import "errors"
+import (
+	appErrors "pizza-delivery/internal/errors"
+	"regexp"
+)
+
+var validDirectionsRegex = regexp.MustCompile(`^[\^v<>]+$`)
 
 // Validate validates string input
 func Validate(input string, delivererCount int) error {
@@ -19,17 +24,19 @@ func Validate(input string, delivererCount int) error {
 
 func validateInput(input string) error {
 	if input == "" {
-		return errors.New("no input found")
+		return appErrors.ErrorValidationEmptyInput
 	}
 
-	// TODO: Validate input with regex
+	if !validDirectionsRegex.MatchString(input) {
+		return appErrors.ErrorValidationInvalidInput
+	}
 
 	return nil
 }
 
 func validateDeliverCount(count int) error {
 	if count < 1 {
-		return errors.New("invalid number of deliverers")
+		return appErrors.ErrorValidationInvalidDelivererCount
 	}
 
 	return nil

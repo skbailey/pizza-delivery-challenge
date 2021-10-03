@@ -31,7 +31,7 @@ func Deliver(input string, delivererCount int) (int, error) {
 		next, err := gps.Move(direction)
 		if err != nil {
 			// Since we validate the input we should never get here. But in the exceptional
-			// case that we do enter this conditional, terminate the program
+			// case that we do enter this conditional, handle the error
 			return 0, err
 		}
 

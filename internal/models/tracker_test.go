@@ -7,11 +7,11 @@ import (
 
 func TestTrackerDefault(t *testing.T) {
 	tracker := models.NewTracker()
-	uniqueLocations := tracker.GetUniqueLocations()
+	uniqueLocationCount := tracker.CountUniqueLocations()
 
 	expectedCount := 0
-	if len(uniqueLocations) != expectedCount {
-		t.Errorf("expected %d unique locations but found %d", expectedCount, len(uniqueLocations))
+	if uniqueLocationCount != expectedCount {
+		t.Errorf("expected %d unique locations but found %d", expectedCount, uniqueLocationCount)
 	}
 }
 
@@ -19,11 +19,11 @@ func TestTrackerWithOneLocation(t *testing.T) {
 	location := models.NewLocation(0, 0)
 	tracker := models.NewTracker()
 	tracker.AddLocation(location)
-	uniqueLocations := tracker.GetUniqueLocations()
+	uniqueLocationCount := tracker.CountUniqueLocations()
 
 	expectedCount := 1
-	if len(uniqueLocations) != expectedCount {
-		t.Errorf("expected %d unique location but found %d", expectedCount, len(uniqueLocations))
+	if uniqueLocationCount != expectedCount {
+		t.Errorf("expected %d unique location but found %d", expectedCount, uniqueLocationCount)
 	}
 }
 
@@ -36,11 +36,11 @@ func TestTrackerWithMultipleUniqueLocations(t *testing.T) {
 	tracker.AddLocation(initial)
 	tracker.AddLocation(second)
 	tracker.AddLocation(last)
-	uniqueLocations := tracker.GetUniqueLocations()
+	uniqueLocationCount := tracker.CountUniqueLocations()
 
 	expectedCount := 3
-	if len(uniqueLocations) != expectedCount {
-		t.Errorf("expected %d unique locations but found %d", expectedCount, len(uniqueLocations))
+	if uniqueLocationCount != expectedCount {
+		t.Errorf("expected %d unique locations but found %d", expectedCount, uniqueLocationCount)
 	}
 }
 
@@ -53,11 +53,11 @@ func TestTrackerWithSomeDuplicateLocations(t *testing.T) {
 	tracker.AddLocation(initial)
 	tracker.AddLocation(second)
 	tracker.AddLocation(last)
-	uniqueLocations := tracker.GetUniqueLocations()
+	uniqueLocationCount := tracker.CountUniqueLocations()
 
 	expectedCount := 2
-	if len(uniqueLocations) != expectedCount {
-		t.Errorf("expected %d unique locations but found %d", expectedCount, len(uniqueLocations))
+	if uniqueLocationCount != expectedCount {
+		t.Errorf("expected %d unique locations but found %d", expectedCount, uniqueLocationCount)
 	}
 }
 
@@ -70,9 +70,9 @@ func TestTrackerWithOnlyDuplicateLocations(t *testing.T) {
 	tracker.AddLocation(initial)
 	tracker.AddLocation(second)
 	tracker.AddLocation(last)
-	uniqueLocations := tracker.GetUniqueLocations()
+	uniqueLocationCount := tracker.CountUniqueLocations()
 
-	if len(uniqueLocations) != 1 {
-		t.Errorf("expected 1 unique location but found %d", len(uniqueLocations))
+	if uniqueLocationCount != 1 {
+		t.Errorf("expected 1 unique location but found %d", uniqueLocationCount)
 	}
 }
