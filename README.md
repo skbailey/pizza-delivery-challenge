@@ -28,12 +28,13 @@ go test -race -covermode=atomic -coverprofile=coverage.out ./...
 
 ## Linting
 
-We use `golangci-lint`. Once you install the program (via `brew` or [otherwise]()), run the following command at project root.
+We use `golangci-lint`. Once you install the program (via `brew` or [otherwise](https://github.com/golangci/golangci-lint#install-golangci-lint)), run the following command at project root.
 
 ```bash
 golangci-lint run
 ```
-The `golangci.yml` file at project root contains the configuration options for the linter.
+The `.golangci.yml` file at project root contains the configuration options for the linter. We use the [sample default linting configuration
+](https://raw.githubusercontent.com/golangci/golangci-lint/master/.golangci.yml). We recommend [installing a pre commit hook](https://freshman.tech/linting-golang/#setting-up-a-pre-commit-hook) to run the linters beforehand.
 
 ## Docker
 

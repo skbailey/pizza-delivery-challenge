@@ -22,7 +22,7 @@ func TestSuccessfulDeliveryOneInstructionOneDeliverer(t *testing.T) {
 }
 
 func TestSuccessfulDeliveryAroundTheBlockOneDeliverer(t *testing.T) {
-	validInput := "^>v<"
+	validInput := "^>v<" //nolint:goconst
 	validDelivererCount := 1
 	housesVisited, err := delivery.Deliver(validInput, validDelivererCount)
 
@@ -37,7 +37,7 @@ func TestSuccessfulDeliveryAroundTheBlockOneDeliverer(t *testing.T) {
 }
 
 func TestSuccessfulDeliveryBackAndForthOneDeliverer(t *testing.T) {
-	validInput := "^v^v^v^v^v"
+	validInput := "^v^v^v^v^v" //nolint:goconst
 	validDelivererCount := 1
 	housesVisited, err := delivery.Deliver(validInput, validDelivererCount)
 
