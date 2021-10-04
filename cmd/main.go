@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 	"pizza-delivery/internal/pkg/delivery"
-	"pizza-delivery/internal/pkg/reader"
+	"pizza-delivery/internal/pkg/retriever"
 	"sort"
 
 	"github.com/urfave/cli/v2"
@@ -21,7 +21,7 @@ func Run() {
 			delivererCount := c.Int("deliverer-count")
 			fileInput := c.String("file-input")
 
-			input, err := reader.Read(fileInput)
+			input, err := retriever.Read(fileInput)
 			if err != nil {
 				return err
 			}
