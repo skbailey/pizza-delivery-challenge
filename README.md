@@ -15,10 +15,10 @@ go run main.go --file-input <path to file> --deliverer-count 2
 ## Documentation
 
 There are two main top-level packages:
-- `reader`
+- `retriever`
 - `delivery`
 
-### The `reader` package
+### The `retriever` package
 
 There is one exported function in this package: `Read`
 
@@ -30,7 +30,7 @@ func Read(path string) (string, error)
 This package reads string input from a file and returns it.
 
 ```go
-input, err := reader.Read("path/to/file")
+input, err := retriever.Read("path/to/file")
 ```
 
 ### The `delivery` package
